@@ -51,7 +51,7 @@ umask 000
 exec /etc/init.d/openhab start
 EOT
 chmod +x /etc/service/openhab/run
-ln -s /opt/openhab/runtime/karaf/bin/openHAB-service /etc/init.d/openhab
+ln -s /opt/openhab/runtime/karaf/bin/start /etc/init.d/openhab
 
 # Quick Cleanup
 rm /opt/openhab/*.bat 
