@@ -34,8 +34,8 @@ wget -nv https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfu
 unzip -q openhab-online-2.0.0-SNAPSHOT.zip -d /opt/openhab
 
 # HABMIN
-wget -nv https://github.com/cdjackson/HABmin2/releases/download/0.1.6/org.openhab.ui.habmin_0.1.6.jar
-cp -rp org.openhab.ui.habmin_0.1.6.jar /opt/openhab/addons/org.openhab.ui.habmin_0.1.6.jar
+wget -nv https://github.com/cdjackson/HABmin2/blob/master/output/org.openhab.ui.habmin_0.1.7-SNAPSHOT.jar
+cp -rp org.openhab.ui.habmin_0.1.7-SNAPSHOT.jar /opt/openhab/addons/org.openhab.ui.habmin_0.1.7.jar
 
 # Add user:group and chown
 adduser --system --no-create-home --group openhab
@@ -48,10 +48,9 @@ mkdir -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
 !/bin/bash
 umask 000
-exec /etc/init.d/openhab start
+exec /opt/openhab/runtime/karaf/bin/start
 EOT
 chmod +x /etc/service/openhab/run
-ln -s /opt/openhab/runtime/karaf/bin/start /etc/init.d/openhab
 
 # Quick Cleanup
 rm /opt/openhab/*.bat 
