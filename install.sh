@@ -48,7 +48,13 @@ mkdir -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
 #!/bin/bash
 umask 000
-exec /opt/openhab/runtime/karaf/bin/start
+# Check if gedit is running
+if pgrep "karaf" > /dev/null
+then
+    echo "Running"
+else
+    exec /opt/openhab/runtime/karaf/bin/start
+fi
 EOT
 chmod +x /etc/service/openhab/run
 
