@@ -46,7 +46,7 @@ chmod +x /opt/openhab/addons/*.jar
 # Add startup
 mkdir -p /etc/service/openhab
 cat <<'EOT' > /etc/service/openhab/run
-!/bin/bash
+#!/bin/bash
 umask 000
 exec /opt/openhab/runtime/karaf/bin/start
 EOT
